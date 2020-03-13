@@ -1,0 +1,56 @@
+page{  
+  display: flex;  
+  flex-direction: column;  
+  height: 100%;  
+}  
+.product-name-wrap{
+  margin: 0px 10px;
+  font-size: 14px;
+  color: #404040;
+    z-index: 30;
+}
+.ui-list-item-info{
+  margin: 5px 0px;
+}
+.address{
+  width: 100%;
+}
+.address .ui-list-item-address{
+  display: inline-block;
+  color: #585c64;
+  width: 80%;
+}
+.ui-list-item-time{
+  margin: 5px 0px;
+}
+.address .ui-list-item-del{
+  display: inline-block;
+  position: absolute;
+  right: 10rpx;
+  color: #585c64;
+  width: 20%;
+  text-align: center;
+}
+/* 分割线 */
+.separate {
+  margin: 5px 0px;
+  height: 2rpx;
+  background-color: #f2f2f2;
+}
+.add-address{
+  margin: 0 auto;
+  margin-top: 30px;
+  width: 150px;
+  height: 35px;
+  border: 1px #000 solid;
+  line-height: 35px;
+  text-align: center;
+  color: #000;
+  border-radius: 5rpx;
+      display: block;
+}
+.add-img{
+  margin-right: 15rpx;
+  width: 15px;
+  height: 15px;
+}

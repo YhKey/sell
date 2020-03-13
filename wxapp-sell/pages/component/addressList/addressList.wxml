@@ -1,0 +1,17 @@
+<scroll-view class="scroll" scroll-x="true">
+  <view wx:for="{{addressList}}" wx:key="index" class="product-name-wrap">
+    <view class="ui-list-item-info" bindtap="selectAddress" data-detailid="{{item.detailId}}">{{item.name}}
+    <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text> {{item.phone}}
+    </view>
+    <view class="address">
+    <view class="ui-list-item-address" bindtap="selectAddress" data-detailid="{{item.detailId}}">
+      {{item.address}}
+    </view>
+    <view class="ui-list-item-del" data-id="{{index}}" data-detailid="{{item.detailId}}" bindtap="delAddress">删除</view>
+    </view>
+    <view class="separate"></view>
+  </view>
+</scroll-view>
+<view class="add-address" bindtap="addAddress">
+  <image class="add-img" src="../../../image/add.png"></image>新增地址
+</view>

@@ -1,0 +1,47 @@
+<!--pages/detail/detail.wxml-->
+
+<!-- banner -->
+<!-- <import src="../template/template.wxml" /> -->
+ 
+<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <!-- <block wx:for="{{goods.imgUrls}}"> -->
+    <swiper-item>
+      <image src="{{productInfo.icon}}" data-src="{{productInfo.icon}}" bindtap="previewImage" mode="widthFix"></image>
+    </swiper-item>
+  <!-- </block> -->
+</swiper>
+<!--商品价格和商品描述-->
+<view>
+<view class="product-name-wrap">
+    {{productInfo.name}} 
+    <p class="product-name-wrap">{{productInfo.description}}</p>
+  </view>
+  <view class="product-price-wrap">
+      <view>
+        <p class="product-price-new">￥{{productInfo.price}}</p>  
+        <p class="product-price-old">原价￥{{goods.privilegePrice}}</p> 
+      </view>
+  </view>
+</view>
+
+ <view class="details"> 
+  <scroll-view scroll-y="true">
+    <text>商品详情</text>
+    <!-- <block wx:for-items="{{goods.detailImg}}" wx:key="name"> -->
+       <image class="image_detail" src="{{productInfo.icon}}" mode="widthFix"/> 
+    <!-- </block> -->
+    <view class="temp"></view>
+  </scroll-view>
+ </view>
+
+<!-- 底部悬浮栏 -->
+<view class="detail-nav">
+  <image bindtap="toCar" src="../../../image/cart.jpg" />  
+  <view class="line_nav"></view>
+   <image bindtap="addLike" src="{{isLike?'../../../image/enshrine.jpg':'../../../image/enshrine.jpg'}}" /> 
+  <button data-prodictid="{{productInfo.id}}"  class="button-green" bindtap="addCar" >加入购物车</button>
+  <button class="button-red" bindtap="immeBuy" formType="submit">立即购买</button>
+</view>
+
+<!--加入购物车-->
+<!-- <view class="dialog {{ showDialog ? 'dialog--show' : '' }}"> -->

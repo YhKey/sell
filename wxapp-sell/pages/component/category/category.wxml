@@ -1,0 +1,35 @@
+
+  <!-- 左侧类型 -->
+  <scroll-view scroll-y="true" class="categroy-left">
+    <view wx:for="{{categoryList}}" wx:key="index" data-id="{{item.categoryType}}" data-index="{{index}}" data-categoryseclist="{{item.productCategorySecList}}" bindtap="switchTab" class="cate-list {{curIndex === index?'on':''}}">
+      {{item.categoryName}}
+    </view>
+  </scroll-view>
+
+  <!-- 右侧数据 -->
+  <!-- <scroll-view scroll-y="true" class="categroy-right">
+    <view wx:for="{{products}}" wx:for-item="product" wx:key="index">
+      <navigator url="../detail/detail?productId={{product.id}}" class="product-list">
+        <image src="{{product.icon}}"></image>
+        <text>{{product.name}}</text>
+      </navigator>
+    </view>
+  </scroll-view> -->
+  <!--右侧栏-->
+  <view class="nav_right">
+    <!--如果有数据，才遍历项-->
+    <view wx:if="{{categorySecList.length!=0}}">
+      <block wx:for="{{categorySecList}}" wx:for-item="categorySec" wx:key="index">
+        <view class="nav_right_items">
+          <!--界面跳转 类目下商品 -->
+          <navigator url="../productList/productList?categoryId={{categorySec.categoryId}}&categorySecType={{categorySec.categorySecType}}" class="product-list">
+            <image src="{{categorySec.categoryIcon}}"></image>
+            <text>{{categorySec.categorySecName}}</text>
+          </navigator>
+        </view>
+      </block>
+    </view>
+    <!--如果无数据，则显示数据-->
+    <view class="nodata_text" wx:else>该分类暂无数据</view>
+  </view>
+

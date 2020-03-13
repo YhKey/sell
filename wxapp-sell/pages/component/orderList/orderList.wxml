@@ -1,0 +1,165 @@
+<view class="swiper-tab">
+  <block wx:for="{{swipertab}}" wx:key="sptab">
+    <view class="swiper-tab-list {{currentTab== item.index ? 'on' : ''}}" data-current="{{item.index}}" bindtap="swichNav">{{item.name}}</view>
+  </block>
+</view>
+<view class="blank"></view>
+<swiper current="{{currentTab}}" class="swiper-box" duration="300" bindchange="bindChange">
+
+  <!-- 全部订单 -->
+  <swiper-item class="scrollers">
+    <view wx:if="{{alreadyOrder.length==0}}">
+      <text>暂无订单！</text>
+    </view>
+    <view wx:else>
+      <scroll-view scroll-y="true" class="scrollView">
+        <block wx:for="{{alreadyOrder}}" wx:key="index" class="scrollView">
+          <view class="orderListTitle">
+            <text class="userName">订单信息</text>
+            <text class="orderStatus">{{item.orderStatusMsg}}</text>
+          </view>
+          <view bindtap="toOrderDetail" data-orderid="{{item.orderId}}">
+            <block wx:for="{{item.orderDetailList}}" wx:for-item="i" wx:key="index">
+              <view class="orderListDetails">
+                <!-- 图片 -->
+                <view class="productImg">
+                  <image src="{{i.productIcon}}" background-size="cover"></image>
+                </view>
+                <!-- 详情 -->
+                <view class="productInfo">
+                  <view class="productTitle">预定时间: {{i.time}}</view>
+                  <text class="productPrice">当前状态：{{i.status}}</text>
+                </view>
+              </view>
+            </block>
+            <!-- 合计 -->
+            <view class="productCount">
+              <view>
+                <text>合计：￥{{item.orderAmount}}</text>
+              </view>
+            </view>
+
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+  </swiper-item>
+  <!-- 待付款 -->
+  <swiper-item class="scrollers">
+    <view wx:if="{{waitPayOrder.length==0}}">
+      <text>暂无订单！</text>
+      <!-- <view class="cart-no-data">购物车是空的哦~</view> -->
+    </view>
+    <view wx:else>
+      <scroll-view  scroll-y="true" class="scrollView">
+        <block class="orderDetails" wx:for="{{waitPayOrder}}" wx:key="index">
+          <view class="orderListTitle">
+            <text class="userName">订单信息</text>
+            <text class="orderStatus">{{item.orderStatusMsg}}</text>
+          </view>
+          <view bindtap="toOrderDetail" data-orderid="{{item.orderId}}">
+            <block wx:for="{{item.orderDetailList}}" wx:for-item="i" wx:key="index">
+              <view class="orderListDetails">
+                <!-- 图片 -->
+                <view class="productImg">
+                  <image src="{{i.productIcon}}" background-size="cover"></image>
+                </view>
+                <!-- 详情 -->
+                <view class="productInfo">
+                  <view class="productTitle">预定时间: {{i.time}}</view>
+                  <text class="productPrice">当前状态：{{i.status}}</text>
+                </view>
+              </view>
+            </block>
+            <!-- 合计 -->
+            <view class="productCount">
+              <view>
+                <text>合计：￥{{item.orderAmount}}</text>
+              </view>
+            </view>
+
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+  </swiper-item>
+  <!-- 待收货 -->
+  <swiper-item class="scrollers">
+    <view wx:if="{{waitReceiveOrder.length==0}}">
+      <text>暂无订单！</text>
+      <!-- <view class="cart-no-data">购物车是空的哦~</view> -->
+    </view>
+    <view wx:else>
+      <scroll-view scroll-y="true" class="scrollView">
+        <block class="orderDetails" wx:for="{{waitReceiveOrder}}" wx:key="index">
+          <view class="orderListTitle">
+            <text class="userName">订单信息</text>
+            <text class="orderStatus">{{item.orderStatusMsg}}</text>
+          </view>
+          <view bindtap="toOrderDetail" data-orderid="{{item.orderId}}">
+            <block wx:for="{{item.orderDetailList}}" wx:for-item="i" wx:key="index">
+              <view class="orderListDetails">
+                <!-- 图片 -->
+                <view class="productImg">
+                  <image src="{{i.productIcon}}" background-size="cover"></image>
+                </view>
+                <!-- 详情 -->
+                <view class="productInfo">
+                  <view class="productTitle">预定时间: {{i.time}}</view>
+                  <text class="productPrice">当前状态：{{i.status}}</text>
+                </view>
+              </view>
+            </block>
+            <!-- 合计 -->
+            <view class="productCount">
+              <view>
+                <text>合计：￥{{item.orderAmount}}</text>
+              </view>
+            </view>
+
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+  </swiper-item>
+  <!-- 取消 -->
+  <swiper-item class="scrollers">
+    <view wx:if="{{lostOrder.length==0}}">
+      <text>暂无订单！</text>
+      <!-- <view class="cart-no-data">购物车是空的哦~</view> -->
+    </view>
+    <view wx:else>
+      <scroll-view scroll-y="true" class="scrollView">
+        <block class="orderDetails" wx:for="{{lostOrder}}" wx:key="index">
+          <view class="orderListTitle">
+            <text class="userName">订单信息</text>
+            <text class="orderStatus">{{item.orderStatusMsg}}</text>
+          </view>
+          <view bindtap="toOrderDetail" data-orderid="{{item.orderId}}">
+            <block wx:for="{{item.orderDetailList}}" wx:for-item="i" wx:key="index">
+              <view class="orderListDetails">
+                <!-- 图片 -->
+                <view class="productImg">
+                  <image src="{{i.productIcon}}" background-size="cover"></image>
+                </view>
+                <!-- 详情 -->
+                <view class="productInfo">
+                  <view class="productTitle">预定时间: {{i.time}}</view>
+                  <text class="productPrice">当前状态：{{i.status}}</text>
+                </view>
+              </view>
+            </block>
+            <!-- 合计 -->
+            <view class="productCount">
+              <view>
+                <text>合计：￥{{item.orderAmount}}</text>
+              </view>
+            </view>
+
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+  </swiper-item>
+
+</swiper>

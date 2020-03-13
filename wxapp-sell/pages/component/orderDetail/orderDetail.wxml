@@ -1,0 +1,40 @@
+<view class="main">
+  <view class="orderStatus">
+    <view class="status">
+      {{orderDetail.orderStatusMsg}}
+    </view>
+  </view>
+  <!-- 收货地址 -->
+  <view class="orderTitle">
+    <view>收货地址</view>
+  </view>
+  <view class="orders-address">
+    <text class="orders-address-name">收货人: {{orderDetail.buyerName}}</text>
+    <text class="orders-address-phone">电话: {{orderDetail.buyerPhone}}</text>
+    <view class="orders-address-detail">{{orderDetail.buyerAddress}}</view>
+  </view>
+  <!-- 商品信息 -->
+  <view class="orders-box">
+    <view class="orderTitle">
+      <view>商品信息</view>
+    </view>
+    <view wx:for="{{orderDetail.orderDetailList}}" wx:key="index" class="orders-list">
+      <image class="orders-thumb" src="{{item.productIcon}}"></image>
+      <view class="orders-pro-name">{{item.productName}}</view>
+      <view class="orders-pro-price">￥{{item.productPrice}}</view>
+      <view class="orders-count-num">×{{item.productQuantity}}</view>
+    </view>
+  </view>
+  <!-- 其他信息 -->
+  <view class="ordersInfo">
+    <view>订单编号：{{orderDetail.orderId}}</view>
+    <view>下单时间：{{orderDetail.createTime}}</view>
+  </view>
+
+  <view class="orders-footer">
+    <view class="orders-footer">
+      <view class="orders-footer-total">付款合计：￥{{orderDetail.orderAmount}}</view>
+        <view wx:if="{{orderDetail.orderStatus!=2}}" class="orders-footer-btn" data-orderid="{{orderDetail.orderId}} " bindtap="toCancel">取消订单</view>
+    </view>
+  </view>
+</view>

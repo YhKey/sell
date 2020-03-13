@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://192.168.147.133/sell?characterEncoding=utf-8&userSSL=false
+  jpa:
+    show-sql: true
+  jackson:
+    default-property-inclusion: non_null
+  redis:
+    host: 192.168.147.133
+    port: 6379
+    password:
+
+server:
+  servlet:
+    context-path: /sell
+  port: 9999
+
+
+#logging:
+#  pattern:
+#    console: "%d - %msg%n"
+##  path: 输出到文件的路径 /var/log/tomcat
+#  level:
+#    com.jluzh.LoggerTest: debug
+logging:
+  level:
+    com.jluzh.sell.dataobject.mapper: trace'
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
